@@ -1,0 +1,7 @@
+# mvn project ignore
+.settings/
+/target/
+/bin/
+/logs/
+.classpath
+.project
