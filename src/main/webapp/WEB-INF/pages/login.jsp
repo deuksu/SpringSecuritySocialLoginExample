@@ -648,7 +648,7 @@ body{
 				<c:url value="../services/signup" var="signupurl" />`
 			<div class="account">
 				<h2><a href="${signupurl}">Don't have an account? Sign Up!</a></h2>
-				<div class="span">
+				<div class="span"><c:url value='../auth/facebook?scope=email,user_about_me,user_birthday' />
 					<form name='facebookSocialloginForm'
             		  action="<c:url value='../auth/facebook?scope=email,user_about_me,user_birthday' />" method='POST'>
 							<img src="../images/facebook.png" alt="">

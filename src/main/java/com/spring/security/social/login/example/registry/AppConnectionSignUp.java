@@ -1,15 +1,17 @@
 package com.spring.security.social.login.example.registry;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.social.connect.UserProfile;
 
-import com.spring.security.social.login.example.util.SecurityUtil;
 import com.spring.security.social.login.example.dto.LocalUser;
 import com.spring.security.social.login.example.dto.SocialProvider;
 import com.spring.security.social.login.example.dto.UserRegistrationForm;
 import com.spring.security.social.login.example.service.UserService;
+import com.spring.security.social.login.example.util.SecurityUtil;
 
 /**
  * If no local user associated with the given connection then
@@ -20,11 +22,14 @@ import com.spring.security.social.login.example.service.UserService;
  */
 public class AppConnectionSignUp implements ConnectionSignUp {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  
     @Autowired
     private UserService userService;
 
     @Override
     public String execute(final Connection<?> connection) {
+      logger.debug(connection.toString());
         UserRegistrationForm userDetails = toUserRegistrationObject(connection.getKey().getProviderUserId(), SecurityUtil.toSocialProvider(connection.getKey().getProviderId()), connection.fetchUserProfile());
         LocalUser user = (LocalUser) userService.registerNewUser(userDetails);
         return user.getUserId();

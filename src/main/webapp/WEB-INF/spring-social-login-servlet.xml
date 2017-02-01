@@ -19,6 +19,9 @@
         <constructor-arg ref="socialUserDetailService"/>
     </bean>
 
+
+
+
     <!-- form login beans -->
     <bean id="appAuthenticationEntryPoint"
           class="com.spring.security.social.login.example.entrypoint.AppAuthenticationEntryPoint">
@@ -49,6 +52,11 @@
         <property name="filterProcessesUrl" value="/j_spring_security_check"/>
         <property name="rememberMeServices" ref="rememberMeServices"/>
     </bean>
+
+
+
+
+
 
 
     <!-- Anyone can access these urls -->
